@@ -5,6 +5,7 @@ body {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
+    font-size: 1rem; /* Использование rem для шрифта */
 }
 
 /* Основные стили для header и main */
@@ -29,14 +30,14 @@ header {
     align-items: center;
     padding: 16px;
     background-color: white;
-
+    flex-wrap: wrap;
 }
 
-.logo,
+/*.logo,
 .meniu {
     border: 1px solid red;
-    /* временная граница для отладки */
-}
+    /* временная граница для отладки 
+}*/
 
 .logo {
     display: flex;
@@ -55,7 +56,9 @@ header {
     line-height: 120%;
     /* 37.2px */
 }
-
+.contact-image {
+    display: none;
+}
 .meniu {
     display: flex;
     justify-content: center;
@@ -152,6 +155,8 @@ main {
     /* 4 строки, высота подстраивается под содержимое */
     gap: 20px;
     background-color: white;
+    align-items: start; /* Добавляем выравнивание по началу строки */
+
 }
 
 .item1 {
@@ -165,12 +170,12 @@ h1 {
     color: black;
     /* Desktop/H1 */
     font-family: Roboto;
-    font-size: 61px;
+    font-size: 2.5em; /* Шрифт будет увеличиваться относительно размера родителя */
     font-style: normal;
     font-weight: 900;
     line-height: 120%;
-    /* 73.2px */
-}
+    margin: 0;
+    }
 
 /* Элемент 2 занимает 3-4 колонки в первой строке */
 .item2 {
@@ -232,8 +237,41 @@ h1 {
     /* Занимает все 4 колонки */
     grid-row: 2 / 4;
     /* 2-я и 3-я строки */
+    width: 100%; /* Полная ширина */
+    height: auto; /* Автоматическая высота */
 }
 
+.card {
+    display: flex;
+    padding: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    /* gap: 20px; */
+    margin: 0;
+    padding: 0;
+}
+
+.card img {
+    padding-bottom: 20px;
+}
+.card h2 {
+    color: black;
+font-family: Roboto;
+font-size: 25px;
+font-style: normal;
+font-weight: 700;
+line-height: 120%; /* 30px */
+}
+
+.card p {
+    color: #4E4B66;
+/* Body/Regular */
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 24px */
+}
 /* Карточки расположены на 4-й строке по 1 колонке */
 .item4 {
     grid-column: 1 / 2;
@@ -272,4 +310,188 @@ h1 {
     font-weight: 900;
     line-height: 120%;
     /* 73.2px */
+}
+@media (max-width: 1024px) {
+    /* Настройка сетки для элементов .item1, .item2 и .item3 в столбик */
+    .item1, .item2, .item3 {
+        grid-column: 1 / -1; /* Каждая занимает всю ширину */
+        grid-row: auto; /* Автоматическое размещение в строке */
+        justify-self: center; /* Центрирование элементов по горизонтали */
+        width: 100%; /* Полная ширина для соответствия родителю */
+        max-width: 600px; /* Максимальная ширина для удобочитаемости */
+
+    }
+h1 {
+    text-align: center;
+}
+.info {
+    text-align: center;
+}
+    /* Уменьшение размера элементов .item4, .item5, .item6 и .item7 */
+    .item4, .item5, .item6, .item7 {
+        transform: scale(0.9); /* Уменьшение размера */
+    }
+
+    /* Дополнительные настройки для .item4 - .item7 для адаптивности */
+    .item4, .item5, .item6, .item7 {
+        grid-column: auto; /* Сохраняем оригинальное расположение */
+        grid-row: auto; /* Автоматическое размещение в строке */
+    }
+
+    /* Переопределение ширины для адаптивности */
+    .item4, .item5, .item6, .item7 {
+        width: 100%; /* Полная ширина внутри своей колонки */
+    }
+}
+@media (max-width: 768px) {
+    /* Настройка сетки для элементов .item1, .item2 и .item3 в столбик */
+    .item1, .item2, .item3 {
+        grid-column: 1 / -1; /* Каждая занимает всю ширину */
+        grid-row: auto; /* Автоматическое размещение в строке */
+        justify-self: center; /* Центрирование элементов по горизонтали */
+        width: 100%; /* Полная ширина для соответствия родителю */
+        max-width: 600px; /* Максимальная ширина для удобочитаемости */
+
+    }
+h1 {
+    text-align: center;
+}
+.info {
+    text-align: center;
+}
+.item4 {
+    grid-column: 1 / 3; /* Занимает первые две колонки */
+}
+
+.item5 {
+    grid-column: 3 / 5; /* Занимает третью и четвертую колонки */
+}
+
+/* Элементы .item6 и .item7 перемещаются на следующую строку */
+.item6 {
+    grid-column: 1 / 3; /* Занимает первые две колонки на новой строке */
+}
+
+.item7 {
+    grid-column: 3 / 5; /* Занимает третью и четвертую колонки на новой строке */
+}
+
+/* Переопределение ширины для адаптивности */
+.item4, .item5, .item6, .item7 {
+    width: 100%; /* Полная ширина внутри своей колонки */
+}
+/* Скрываем навигацию на маленьких экранах */
+.meniu {
+    display: none;
+}
+
+/* Показываем кнопку для мобильного меню */
+.mobile-menu-button {
+    display: block;
+    /* Стиль кнопки, если нужно (например, фоновый цвет, отступы и т.д.) */
+}
+
+/* Настройка для кнопки мобильного меню (если требуется) 
+.mobile-menu-button {
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.mobile-menu-button:hover {
+    background-color: #ff9900;
+    transform: scale(1.05);
+}
+
+.mobile-menu-button:active {
+    background-color: #e68a00;
+    transform: scale(0.95);
+}*/
+
+}
+@media (max-width: 360px) {
+    /* Замена кнопки на изображение */
+    .my-button {
+        display: none; /* Скрыть кнопку на экране 360px и меньше */
+    }
+
+    .contact-image {
+        display: block; /* Показать изображение вместо кнопки */
+        /*width: 100px; /* Размер изображения, можно изменить по необходимости */
+        height: auto; /* Высота автоматически подстраивается по пропорциям */
+        margin: 10px auto; /* Центрирование изображения по горизонтали */
+        color: orange;
+        size: 10px;
+    }
+
+    /* Уменьшение размера содержимого всех элементов */
+    h1 {
+        font-size: 1.5em; /* Уменьшить размер шрифта заголовка */
+        text-align: center; /* Центрирование заголовка */
+    }
+
+    .info p {
+        font-size: 14px; /* Уменьшить размер шрифта в параграфе */
+        margin: 0; /* Удалить отступы */
+        padding: 0; /* Удалить отступы */
+    }
+
+    .Button1 {
+        font-size: 14px; /* Уменьшить размер шрифта кнопки */
+        padding: 8px 16px; /* Уменьшить внутренние отступы кнопки */
+    }
+
+    .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card img {
+        width: 30px; /* Уменьшить размер изображения в карточке */
+        height: 30px; /* Уменьшить размер изображения в карточке */
+    }
+
+    .card h2 {
+        font-size: 18px; /* Уменьшить размер шрифта заголовка в карточке */
+    }
+
+    .card p {
+        font-size: 14px; /* Уменьшить размер шрифта в карточке */
+    }
+
+    /* Уменьшить отступы и размеры для всех items */
+    .item1, .item2, .item3, .item4, .item5, .item6, .item7 {
+        padding: 10px; /* Уменьшить внутренние отступы */
+        font-size: 14px; /* Уменьшить общий размер шрифта */
+    }
+
+    /* Настройка сетки для всех элементов в один столбец */
+    main {
+        grid-template-columns: 1fr; /* Одна колонка для всех элементов */
+        grid-template-rows: repeat(7, auto); /* Автоматическая высота для каждой строки */
+    }
+
+    .item1,
+    .item2,
+    .item3,
+    .item4,
+    .item5,
+    .item6,
+    .item7 {
+        grid-column: 1 / -1; /* Каждая занимает всю ширину */
+        grid-row: auto; /* Автоматическое размещение в строке */
+        width: 100%; /* Полная ширина для соответствия родителю */
+    }
+
+    .info {
+        text-align: center; /* Центрирование текста */
+    }
 }
